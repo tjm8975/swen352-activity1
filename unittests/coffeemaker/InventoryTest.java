@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import coffeemaker.exceptions.InventoryException;
 import junit.framework.TestCase;
 
 public class InventoryTest extends TestCase {
@@ -47,5 +49,48 @@ public class InventoryTest extends TestCase {
 		inv.setChocolate(1);
 		assertEquals(inv.getChocolate(), 1);
 	}
+	
+	@Test
+	public void testAddChocolateNaN() {
+		try {
+			inv.addChocolate("abc");
+		} catch (InventoryException e) {
+			assertEquals(e.getMessage(), "Units of chocolate must be a positive integer");
+			return;
+		};
+		fail("Should not parse invalid input");
+	}
+	
+	@Test
+	public void testAddChocolateNeg1() {
+		try {
+			inv.addChocolate("-1");
+		} catch (InventoryException e) {
+			assertEquals(e.getMessage(), "Units of chocolate must be a positive integer");
+			return;
+		};
+		fail("Should not parse invalid input");
+	}
+	
+	@Test
+	public void testAddChocolate0() {
+		try {
+			inv.addChocolate("0");
+		} catch (InventoryException e) {
+			fail("Should parse int");
+		};
+		assertEquals(inv.getChocolate(), 15);
+	}
+	
+	@Test
+	public void testAddChocolate1() {
+		try {
+			inv.addChocolate("1");
+		} catch (InventoryException e) {
+			fail("Should parse int");
+		};
+		assertEquals(inv.getChocolate(), 16);
+	}
+
 
 }
