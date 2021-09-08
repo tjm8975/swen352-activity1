@@ -457,4 +457,13 @@ public class InventoryTest extends TestCase {
 		inv.useIngredients(rec);
 		assertEquals(inv.getChocolate(), 0);
 	}
+	
+	/**
+	 * Tests for toString method
+	 */
+	
+	@Test
+	public void testToString() {
+		assertEquals(inv.toString(), "Coffee: 15\nMilk: 15\nSugar: 15\nChocolate: 15\n");
+	}
 }
