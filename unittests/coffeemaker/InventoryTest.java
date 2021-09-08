@@ -26,6 +26,10 @@ public class InventoryTest extends TestCase {
 		rec = null;
 		super.tearDown();
 	}
+	
+	/**
+	 * Tests for chocolate methods
+	 */
 
 	@Test
 	public void testGetChocolate() {
@@ -91,6 +95,10 @@ public class InventoryTest extends TestCase {
 		};
 		assertEquals(inv.getChocolate(), 16);
 	}
+	
+	/**
+	 * Tests for coffee methods
+	 */
 
 	@Test
 	public void testGetCoffee() {
@@ -155,5 +163,74 @@ public class InventoryTest extends TestCase {
 			fail("Should parse int");
 		};
 		assertEquals(inv.getCoffee(), 16);
+	}
+	
+	/**
+	 * Tests milk methods
+	 */
+	
+	@Test
+	public void testGetMilk() {
+		assertEquals(inv.getMilk(), 15);
+	}
+	
+	@Test
+	public void testSetMilk0() {
+		inv.setMilk(0);
+		assertEquals(inv.getMilk(), 0);
+	}
+	
+	@Test
+	public void testSetMilkNeg1() {
+		inv.setMilk(-1);
+		assertEquals(inv.getMilk(), 15);
+	}
+	
+	@Test
+	public void testSetMilk1() {
+		inv.setMilk(1);
+		assertEquals(inv.getMilk(), 1);
+	}
+	
+	@Test
+	public void testAddMilkNaN() {
+		try {
+			inv.addMilk("abc");
+		} catch (InventoryException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+			return;
+		};
+		fail("Should not parse invalid input");
+	}
+	
+	@Test
+	public void testAddMilkNeg1() {
+		try {
+			inv.addMilk("-1");
+		} catch (InventoryException e) {
+			assertEquals(e.getMessage(), "Units of milk must be a positive integer");
+			return;
+		};
+		fail("Should not parse invalid input");
+	}
+	
+	@Test
+	public void testAddMilk0() {
+		try {
+			inv.addMilk("0");
+		} catch (InventoryException e) {
+			fail("Should parse int");
+		};
+		assertEquals(inv.getMilk(), 15);
+	}
+	
+	@Test
+	public void testAddMilk1() {
+		try {
+			inv.addMilk("1");
+		} catch (InventoryException e) {
+			fail("Should parse int");
+		};
+		assertEquals(inv.getMilk(), 16);
 	}
 }
