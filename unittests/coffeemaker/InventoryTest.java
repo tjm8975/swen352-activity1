@@ -399,4 +399,62 @@ public class InventoryTest extends TestCase {
 		};
 		assertFalse(inv.enoughIngredients(rec));
 	}
+	
+	/**
+	 * Tests for using ingredients
+	 */
+	
+	@Test
+	public void testUseIngredientsNotEnough() {
+		try {
+			rec.setAmtMilk("16");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertFalse(inv.useIngredients(rec));
+	}
+	
+	@Test
+	public void testUseIngredientsCoffee() {
+		try {
+			rec.setAmtCoffee("15");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		inv.useIngredients(rec);
+		assertEquals(inv.getCoffee(), 0);
+	}
+	
+	@Test
+	public void testUseIngredientsMilk() {
+		try {
+			rec.setAmtMilk("15");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		inv.useIngredients(rec);
+		assertEquals(inv.getMilk(), 0);
+	}
+	
+	@Test
+	public void testUseIngredientsSugar() {
+		try {
+			rec.setAmtSugar("15");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		inv.useIngredients(rec);
+		assertEquals(inv.getSugar(), 0);
+	}
+	
+	@Test
+	public void testUseIngredientsChocolate() {
+		try {
+			rec.setAmtChocolate("15");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		inv.useIngredients(rec);
+		assertEquals(inv.getChocolate(), 0);
+	}
 }
