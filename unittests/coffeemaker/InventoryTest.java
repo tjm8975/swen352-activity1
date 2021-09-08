@@ -26,8 +26,26 @@ public class InventoryTest extends TestCase {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testGetChocolate() {
+		assertEquals(inv.getChocolate(), 15);
+	}
+	
+	@Test
+	public void testSetChocolate0() {
+		inv.setChocolate(0);
+		assertEquals(inv.getChocolate(), 0);
+	}
+	
+	@Test
+	public void testSetChocolateNeg1() {
+		inv.setChocolate(-1);
+		assertEquals(inv.getChocolate(), 15);
+	}
+	
+	@Test
+	public void testSetChocolate1() {
+		inv.setChocolate(1);
+		assertEquals(inv.getChocolate(), 1);
 	}
 
 }
