@@ -92,5 +92,68 @@ public class InventoryTest extends TestCase {
 		assertEquals(inv.getChocolate(), 16);
 	}
 
-
+	@Test
+	public void testGetCoffee() {
+		assertEquals(inv.getCoffee(), 15);
+	}
+	
+	@Test
+	public void testSetCoffee0() {
+		inv.setCoffee(0);
+		assertEquals(inv.getCoffee(), 0);
+	}
+	
+	@Test
+	public void testSetCoffeeNeg1() {
+		inv.setCoffee(-1);
+		assertEquals(inv.getCoffee(), 15);
+	}
+	
+	@Test
+	public void testSetCoffee1() {
+		inv.setCoffee(1);
+		assertEquals(inv.getCoffee(), 1);
+	}
+	
+	@Test
+	public void testAddCoffeeNaN() {
+		try {
+			inv.addCoffee("abc");
+		} catch (InventoryException e) {
+			assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
+			return;
+		};
+		fail("Should not parse invalid input");
+	}
+	
+	@Test
+	public void testAddCoffeeNeg1() {
+		try {
+			inv.addCoffee("-1");
+		} catch (InventoryException e) {
+			assertEquals(e.getMessage(), "Units of coffee must be a positive integer");
+			return;
+		};
+		fail("Should not parse invalid input");
+	}
+	
+	@Test
+	public void testAddCoffee0() {
+		try {
+			inv.addCoffee("0");
+		} catch (InventoryException e) {
+			fail("Should parse int");
+		};
+		assertEquals(inv.getCoffee(), 15);
+	}
+	
+	@Test
+	public void testAddCoffee1() {
+		try {
+			inv.addCoffee("1");
+		} catch (InventoryException e) {
+			fail("Should parse int");
+		};
+		assertEquals(inv.getCoffee(), 16);
+	}
 }
