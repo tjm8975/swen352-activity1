@@ -166,7 +166,7 @@ public class InventoryTest extends TestCase {
 	}
 	
 	/**
-	 * Tests milk methods
+	 * Tests for milk methods
 	 */
 	
 	@Test
@@ -232,5 +232,74 @@ public class InventoryTest extends TestCase {
 			fail("Should parse int");
 		};
 		assertEquals(inv.getMilk(), 16);
+	}
+	
+	/**
+	 * Tests for sugar methods
+	 */
+	
+	@Test
+	public void testGetSugar() {
+		assertEquals(inv.getSugar(), 15);
+	}
+	
+	@Test
+	public void testSetSugar0() {
+		inv.setSugar(0);
+		assertEquals(inv.getSugar(), 0);
+	}
+	
+	@Test
+	public void testSetSugarNeg1() {
+		inv.setSugar(-1);
+		assertEquals(inv.getSugar(), 15);
+	}
+	
+	@Test
+	public void testSetSugar1() {
+		inv.setSugar(1);
+		assertEquals(inv.getSugar(), 1);
+	}
+	
+	@Test
+	public void testAddSugarNaN() {
+		try {
+			inv.addSugar("abc");
+		} catch (InventoryException e) {
+			assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+			return;
+		};
+		fail("Should not parse invalid input");
+	}
+	
+	@Test
+	public void testAddSugarNeg1() {
+		try {
+			inv.addSugar("-1");
+		} catch (InventoryException e) {
+			assertEquals(e.getMessage(), "Units of sugar must be a positive integer");
+			return;
+		};
+		fail("Should not parse invalid input");
+	}
+	
+	@Test
+	public void testAddSugar0() {
+		try {
+			inv.addSugar("0");
+		} catch (InventoryException e) {
+			fail("Should parse int");
+		};
+		assertEquals(inv.getSugar(), 15);
+	}
+	
+	@Test
+	public void testAddSugar1() {
+		try {
+			inv.addSugar("1");
+		} catch (InventoryException e) {
+			fail("Should parse int");
+		};
+		assertEquals(inv.getSugar(), 16);
 	}
 }
