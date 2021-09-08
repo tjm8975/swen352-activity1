@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import coffeemaker.exceptions.InventoryException;
+import coffeemaker.exceptions.RecipeException;
 import junit.framework.TestCase;
 
 public class InventoryTest extends TestCase {
@@ -301,5 +302,101 @@ public class InventoryTest extends TestCase {
 			fail("Should parse int");
 		};
 		assertEquals(inv.getSugar(), 16);
+	}
+	
+	/**
+	 * Tests for enough coffee
+	 */
+	
+	@Test
+	public void testEnoughIngredientsCoffeeYes() {
+		try {
+			rec.setAmtCoffee("15");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertTrue(inv.enoughIngredients(rec));
+	}
+	
+	@Test
+	public void testEnoughIngredientsCoffeeNo() {
+		try {
+			rec.setAmtCoffee("16");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertFalse(inv.enoughIngredients(rec));
+	}
+	
+	/**
+	 * Tests for enough milk
+	 */
+	
+	@Test
+	public void testEnoughIngredientsMilkYes() {
+		try {
+			rec.setAmtMilk("15");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertTrue(inv.enoughIngredients(rec));
+	}
+	
+	@Test
+	public void testEnoughIngredientsMilkNo() {
+		try {
+			rec.setAmtMilk("16");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertFalse(inv.enoughIngredients(rec));
+	}
+	
+	/**
+	 * Tests for enough sugar
+	 */
+	
+	@Test
+	public void testEnoughIngredientsSugarYes() {
+		try {
+			rec.setAmtSugar("15");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertTrue(inv.enoughIngredients(rec));
+	}
+	
+	@Test
+	public void testEnoughIngredientsSugarNo() {
+		try {
+			rec.setAmtSugar("16");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertFalse(inv.enoughIngredients(rec));
+	}
+	
+	/**
+	 * Tests for enough chocolate
+	 */
+	
+	@Test
+	public void testEnoughIngredientsChocolateYes() {
+		try {
+			rec.setAmtChocolate("15");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertTrue(inv.enoughIngredients(rec));
+	}
+	
+	@Test
+	public void testEnoughIngredientsChocolateNo() {
+		try {
+			rec.setAmtChocolate("16");
+		} catch (RecipeException e) {
+			fail("Should parse int");
+		};
+		assertFalse(inv.enoughIngredients(rec));
 	}
 }
