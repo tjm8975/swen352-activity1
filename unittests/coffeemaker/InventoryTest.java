@@ -56,6 +56,12 @@ public class InventoryTest extends TestCase {
 	}
 	
 	@Test
+	public void testSetChocolate10() {
+		inv.setChocolate(10);
+		assertEquals(inv.getChocolate(), 10);
+	}
+	
+	@Test
 	public void testAddChocolateNaN() {
 		try {
 			inv.addChocolate("abc");
@@ -122,6 +128,12 @@ public class InventoryTest extends TestCase {
 	public void testSetCoffee1() {
 		inv.setCoffee(1);
 		assertEquals(inv.getCoffee(), 1);
+	}
+	
+	@Test
+	public void testSetCoffee10() {
+		inv.setCoffee(10);
+		assertEquals(inv.getCoffee(), 10);
 	}
 	
 	@Test
@@ -194,6 +206,12 @@ public class InventoryTest extends TestCase {
 	}
 	
 	@Test
+	public void testSetMilk10() {
+		inv.setMilk(10);
+		assertEquals(inv.getMilk(), 10);
+	}
+	
+	@Test
 	public void testAddMilkNaN() {
 		try {
 			inv.addMilk("abc");
@@ -260,6 +278,12 @@ public class InventoryTest extends TestCase {
 	public void testSetSugar1() {
 		inv.setSugar(1);
 		assertEquals(inv.getSugar(), 1);
+	}
+	
+	@Test
+	public void testSetSugar10() {
+		inv.setSugar(10);
+		assertEquals(inv.getSugar(), 10);
 	}
 	
 	@Test
