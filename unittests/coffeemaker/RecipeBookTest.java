@@ -49,33 +49,31 @@ public class RecipeBookTest extends TestCase {
 	}
 	
 	@Test
-	public void testAddToFullRecipeList() {
-		boolean added = true;
-		try {
+	public void testAddDifferentRecipes() {
 			Recipe rec1 = new Recipe();
-			Recipe rec2 = new Recipe();
-			Recipe rec3 = new Recipe();
-			Recipe rec4 = new Recipe();
-			
-			rec1.setAmtChocolate("1");
-			rec2.setAmtChocolate("2");
-			rec3.setAmtChocolate("3");
-			rec4.setAmtChocolate("4");
-			
-			System.out.println("Recipe choc:" + recipe.getAmtChocolate());
-			System.out.println("Recipe 1 choc:" + rec1.getAmtChocolate());
-			System.out.println("Recipe 2 choc:" + rec2.getAmtChocolate());
-			System.out.println("Recipe 3 choc:" + rec3.getAmtChocolate());
-			System.out.println("Recipe 4 choc:" + rec4.getAmtChocolate());
-			
+			rec1.setName("Chicken");
 			rb.addRecipe(recipe);
-			rb.addRecipe(rec1);
-			rb.addRecipe(rec2);
-			rb.addRecipe(rec3);
-			added = rb.addRecipe(rec4);
-		}catch(RecipeException ex) {
-			fail("Units of chocolate must be a positive integer");
-		}
+			assertTrue(rb.addRecipe(rec1));
+	}
+	
+	@Test
+	public void testAddToFullRecipeBook() {
+		Recipe rec1 = new Recipe();
+		Recipe rec2 = new Recipe();
+		Recipe rec3 = new Recipe();
+		Recipe rec4 = new Recipe();
+		
+		rec1.setName("Chicken");
+		rec2.setName("Pork");
+		rec3.setName("Burgers");
+		rec4.setName("Hot Dogs");
+		
+		rb.addRecipe(recipe);
+		rb.addRecipe(rec1);
+		rb.addRecipe(rec2);
+		rb.addRecipe(rec3);
+		boolean added = rb.addRecipe(rec4);
+		
 		assertFalse(added);
 	}
 }
