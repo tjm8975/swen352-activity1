@@ -76,4 +76,49 @@ public class RecipeBookTest extends TestCase {
 		
 		assertFalse(added);
 	}
+	
+	@Test
+	public void testDeleteEmptyRecipeList() {
+		assertEquals(rb.deleteRecipe(0), null);
+	}
+	
+	@Test
+	public void testDeleteRecipe() {
+		recipe.setName("Chicken");
+		rb.addRecipe(recipe);
+		assertEquals(rb.deleteRecipe(0), "Chicken");
+	}
+	
+	@Test
+	public void testRecipeDeleted() {
+		recipe.setName("Chicken");
+		rb.addRecipe(recipe);
+		rb.deleteRecipe(0);
+		assertFalse(rb.getRecipes()[0].equals(recipe));
+	}
+	
+	@Test
+	public void testEditEmptyRecipeBook() {
+		assertEquals(rb.editRecipe(0, recipe), null);
+	}
+	
+	@Test
+	public void testEditRecipe() {
+		Recipe rec1 = new Recipe();
+		rec1.setName("Beef");
+		recipe.setName("Chicken");
+		rb.addRecipe(recipe);
+		assertEquals(rb.editRecipe(0, rec1), "Chicken");
+	}
+	
+	@Test
+	public void testNewRecipeAdded() {
+		Recipe rec1 = new Recipe();
+		rec1.setName("Beef");
+		String name = rec1.getName();
+		recipe.setName("Chicken");
+		rb.addRecipe(recipe);
+		rb.editRecipe(0, rec1);
+		assertEquals(rb.getRecipes()[0].getName(), name);
+	}
 }
