@@ -28,6 +28,16 @@ public class RecipeTest {
 	}
 	
 	@Test 
+	public void testSetChocalate0() {
+		try {
+			recipe.setAmtChocolate("0");
+		} catch (RecipeException e) {
+			fail("Should accept valid int");
+		}
+		assertEquals(recipe.getAmtChocolate(), 0);	
+	}
+	
+	@Test 
 	public void testSetChocalate5() {
 		try {
 			recipe.setAmtChocolate("5");
@@ -66,6 +76,16 @@ public class RecipeTest {
 	}
 	
 	@Test
+	public void testSetAmtCoffee0() {
+		try {
+			recipe.setAmtCoffee("0");
+		} catch (RecipeException e) {
+			fail("Should accept valid int");
+		}
+		assertEquals(recipe.getAmtCoffee(), 0);
+	}
+	
+	@Test
 	public void testSetAmtCoffee5() {
 		try {
 			recipe.setAmtCoffee("5");
@@ -73,7 +93,6 @@ public class RecipeTest {
 			fail("Should accept valid int");
 		}
 		assertEquals(recipe.getAmtCoffee(), 5);
-		
 	}
 	
 	@Test 
@@ -104,6 +123,16 @@ public class RecipeTest {
 	}
 	
 	@Test
+	public void testSetAmtMilk0() {
+		try {
+			recipe.setAmtMilk("0");
+		} catch (RecipeException e) {
+			fail("Should accept valid int");
+		}
+		assertEquals(recipe.getAmtMilk(), 0);
+	}
+	
+	@Test
 	public void testSetAmtMilk5() {
 		try {
 			recipe.setAmtMilk("5");
@@ -111,7 +140,6 @@ public class RecipeTest {
 			fail("Should accept valid int");
 		}
 		assertEquals(recipe.getAmtMilk(), 5);
-		
 	}
 	
 	@Test 
@@ -142,6 +170,16 @@ public class RecipeTest {
 	}
 	
 	@Test
+	public void testSetAmtSugar0() {
+		try {
+			recipe.setAmtSugar("0");
+		} catch (RecipeException e) {
+			fail("Should accept valid int");
+		}
+		assertEquals(recipe.getAmtSugar(), 0);
+	}
+	
+	@Test
 	public void testSetAmtSugar5() {
 		try {
 			recipe.setAmtSugar("5");
@@ -149,7 +187,6 @@ public class RecipeTest {
 			fail("Should accept valid int");
 		}
 		assertEquals(recipe.getAmtSugar(), 5);
-		
 	}
 	
 	@Test 
@@ -186,7 +223,24 @@ public class RecipeTest {
 	}
 	
 	@Test
+	public void testSetNameNull() {
+		recipe.setName("name");
+		recipe.setName(null);
+		assertEquals(recipe.getName(), "name");
+	}
+	
+	@Test
 	public void testgetPrice() {
+		assertEquals(recipe.getPrice(), 0);
+	}
+	
+	@Test
+	public void testSetPrice0() {
+		try {
+			recipe.setPrice("0");
+		} catch (RecipeException e) {
+			fail("Should accept valid int");
+		}
 		assertEquals(recipe.getPrice(), 0);
 	}
 	
@@ -198,7 +252,6 @@ public class RecipeTest {
 			fail("Should accept valid int");
 		}
 		assertEquals(recipe.getPrice(), 5);
-		
 	}
 	
 	@Test 
