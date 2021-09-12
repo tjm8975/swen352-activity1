@@ -281,5 +281,14 @@ public class RecipeTest {
 		assertEquals(recipe.toString(), "");
 	}
 	
+	@Test
+	public void testHashCodeNull() {
+		assertEquals(recipe.hashCode(), 31);
+	}
 	
+	@Test
+	public void testHashCodeNotNull() {
+		recipe.setName("name");
+		assertEquals(recipe.hashCode(), 31 + "name".hashCode());
+	}
 }
