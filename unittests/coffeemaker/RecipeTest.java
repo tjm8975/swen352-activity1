@@ -291,4 +291,49 @@ public class RecipeTest {
 		recipe.setName("name");
 		assertEquals(recipe.hashCode(), 31 + "name".hashCode());
 	}
+	
+	@Test
+	public void testEqualsIdentical() {
+		assertTrue(recipe.equals(recipe));
+	}
+	
+	@Test
+	public void testEqualsNull() {
+		assertFalse(recipe.equals(null));
+	}
+	
+	@Test
+	public void testEqualsSameTypeAndNames() {
+		recipe.setName("recipe");
+		Recipe rec1 = new Recipe();
+		rec1.setName("recipe");
+		assertTrue(recipe.equals(rec1));
+	}
+	
+	@Test
+	public void testEqualsSameTypeNotNames() {
+		recipe.setName("recipe");
+		Recipe rec1 = new Recipe();
+		rec1.setName("name");
+		assertFalse(recipe.equals(rec1));
+	}
+	
+	@Test
+	public void testEqualsDifferentType() {
+		RecipeBook rb = new RecipeBook();
+		assertFalse(recipe.equals(rb));
+	}
+	
+	@Test
+	public void testEqualsBothNamesAreNull() {
+		Recipe rec1 = new Recipe();
+		assertTrue(recipe.equals(rec1));
+	}
+	
+	@Test
+	public void testEqualsNameIsNull() {
+		Recipe rec1 = new Recipe();
+		rec1.setName("name");
+		assertFalse(recipe.equals(rec1));
+	}
 }
